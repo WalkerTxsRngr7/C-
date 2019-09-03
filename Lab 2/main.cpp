@@ -9,21 +9,25 @@ Purpose: Lab 2
 
 int main() {
 	//Question 1
-//	double kg, N;
-//	
-//	cout<< "Enter an object's mass in kg. ";
-//	cin >> kg;
-//	
-//	N = 9.8 * kg;
-//	cout<< "The object with a mass of " << kg << "kg has a Force-Weight of " << N << " Newtons.";
-
-
+	double kg, N;
+	
+	cout<< "Enter an object's mass in kg. ";
+	cin >> kg;
+	
+	N = 9.8 * kg;
+	cout<< "The object with a mass of " << kg << "kg has a Force-Weight of " << N << " Newtons.";
+	cout<< endl;
+	cout<< endl;
+	
+	
 	//Question 2
-//	double oz;
-//	cout<< "Enter the ounces of the cereal box.";
-//	cin>> oz;
-//	cout<< "You will need " << 35273.92 / oz << " boxes of cereal to yield 1 metric ton.";
-//	cout<< "The cereal box is " << oz/35273.92 <<" metric tons";
+	double oz;
+	cout<< "Enter the ounces of the cereal box. ";
+	cin>> oz;
+	cout<< "You will need " << 35273.92 / oz << " boxes of cereal to yield 1 metric ton.";
+	cout<< "The cereal box is " << oz/35273.92 <<" metric tons";
+	cout<< endl;
+	cout<< endl;
 
 	
 	//Question 3
@@ -47,7 +51,7 @@ int main() {
 	cout<< endl;
 	cout<< "Dear Instructor " 
 		<< tName 
-		<< " , I am sorry that I am unable to turn in my homework at this time. First, I ate a rotten " 
+		<< " , \nI am sorry that I am unable to turn in my homework at this time. First, I ate a rotten " 
 		<< food 
 		<< ", which made me turn " 
 		<< color 
@@ -59,6 +63,6 @@ int main() {
 		<< animal 
 		<< " must have smelled the remains of the " 
 		<< food 
-		<< " on my homework, because he ate it. I am currently rewriting my homework and hope you will accept it late. Sincerely, " 
+		<< " on my homework, because he ate it. I am currently rewriting my homework and hope you will accept it late.\nSincerely, " 
 		<< myName;
-}d
+}
