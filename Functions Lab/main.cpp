@@ -18,14 +18,14 @@ void printMpg(double gallons, double miles);
 
 int main(int argc, char** argv) 
 {
-
+	bool contInput;
 	do{
 		double liters = getUserLiters();
 		double miles = getUserMiles();
 		double gallons = litersToGallons(liters);
 		
 		printMpg(gallons, miles);
-		bool contInput = cont();
+		contInput = cont();
 	} while (contInput);
 	
 	
