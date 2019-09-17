@@ -1,6 +1,7 @@
 #include <iostream>
 using namespace std;
 
+bool isValid(double side1, double side2, double side3);
 
 
 int main(int argc, char** argv) {
@@ -67,6 +68,61 @@ int main(int argc, char** argv) {
 //			}
 //		} 
 //	}
+
+
+//Question 3 - Area of a Triangle
+	double side1, side2, side3, area, a, b, hyp;
+	bool valid;
+	cout << "Enter the length of 3 sides of a triangle. ";
+	cin >> side1;
+	cin >> side2;
+	cin >> side3;
+	// cout << side1;
+	// cout << side2;
+	// cout << side3;
+
+	if (side1 == side2 && side1 == side3)
+	{
+		hyp = side1;
+		a = side2;
+		b = side3;
+	} else if (side1 >= side2 && side1 >= side3)
+	{
+		hyp = side1;
+		a = side2;
+		b = side3;
+	} else if (side2 >= side1 && side2 >= side3)
+	{
+		hyp = side2;
+		a = side1;
+		b = side3;
+	} else if (side3 >= side1 && side3 >= side3)
+	{
+		hyp = side3;
+		a = side1;
+		b = side2;
+	}
+
+	valid = isValid(hyp, a, b);
+	if (valid)
+	{
+		area = ((a * b) / 2); 		//this is not correct
+		cout << "\nValid. " << area;
+	} else 
+	{
+		cout << "\nThe input is invalid.";
+	}
 	
 	return 0;
+}
+
+bool isValid(double hyp, double a, double b)
+{
+	if (hyp < a + b)
+	{
+		return true;
+	} else 
+	{
+		return false;
+	}
 }

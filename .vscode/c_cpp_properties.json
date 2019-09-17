@@ -11,7 +11,7 @@
                 "_UNICODE"
             ],
             "intelliSenseMode": "msvc-x64",
-            "compilerPath": "\"C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\Bloodshed_Dev-C++\""
+            "compilerPath": "\"C:\\mingw-w64\\i686-8.1.0-posix-dwarf-rt_v6-rev0\\mingw32\\bin\\g++.exe\""
         }
     ],
     "version": 4
