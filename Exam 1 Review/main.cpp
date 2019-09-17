@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 using namespace std;
 
 bool isValid(double side1, double side2, double side3);
@@ -71,7 +72,7 @@ int main(int argc, char** argv) {
 
 
 //Question 3 - Area of a Triangle
-	double side1, side2, side3, area, a, b, hyp;
+	double side1, side2, side3, area, a, b, hyp, s;
 	bool valid;
 	cout << "Enter the length of 3 sides of a triangle. ";
 	cin >> side1;
@@ -106,7 +107,8 @@ int main(int argc, char** argv) {
 	valid = isValid(hyp, a, b);
 	if (valid)
 	{
-		area = ((a * b) / 2); 		//this is not correct
+		s = ((a + b + hyp)/2);
+		area = sqrt(s*(s-a)*(s-b)*(s-hyp));
 		cout << "\nValid. " << area;
 	} else 
 	{
