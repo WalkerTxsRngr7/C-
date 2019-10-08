@@ -1,0 +1,5 @@
+Indie Jones 95 85 100 75 90
+John Wick 80 95 70 0 90 
+Donald Trump 75 60 80 15 70
+Cersei Lannister 95 98 90 89 100
+Kim Kardashian 60 19 55 69 45
