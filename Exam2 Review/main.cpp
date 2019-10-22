@@ -69,7 +69,7 @@ int countEven(int ary[])
 	int cnt = 0;
 	
 	for (int i=0;i < 10; i++)
-	{
+	
 		if (ary[i] % 2 == 0)
 		{
 			cnt++;
