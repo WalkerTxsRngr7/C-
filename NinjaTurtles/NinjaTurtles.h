@@ -14,7 +14,7 @@ class NinjaTurtles
     {
     	name = strName;
     	color = strColor;
-    	setAge(nAge);
+    	setAge(age);
     }
     
     NinjaTurtles(string strName, string strColor)

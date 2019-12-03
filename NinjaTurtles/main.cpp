@@ -35,7 +35,7 @@ int main()
     vector<NinjaTurtles> turtles;
     turtles.push_back(ninja);
     turtles.push_back(ninja2);
-  
+  	cout << "Vector " << turtles[1].toString() << endl;
     //Create more turtles from a function
 //    NinjaTurtles nin3 = createATurtle();
 //    turtles.push_back(nin3);
