@@ -5,22 +5,25 @@ class Board
 {
 	private:
 //		const int SQUARES = 9;
-		char gameBoard[9] = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
+		
 		char winner = ' ';
 	public:
-		
+		char board[9] = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
 		
 		
 	Board(){}
 	
 	
-	
+	string test()
+	{
+		return "TEST";
+	}
 		
-	void displayBoard(char gameBoard[])
+	void display()
 	{
 		for (int row; row < 9; row++)
 		{
-			cout << gameBoard[row] << " ";
+			cout << board[row] << " ";
 			if ((row + 1) % 3 == 0)
 			{
 				cout << endl;
@@ -29,7 +32,7 @@ class Board
 		cout << endl;
 	}
 	
-	void p1Turn(char gameBoard[])
+	void p1Turn(char board[])
 	{
 		//get the Location from the user
 		int nBoardSpot;
@@ -37,12 +40,12 @@ class Board
 		do {
 			cout << "Player 1 turn ... Pick a number to place an X ";
 			cin >> nBoardSpot;
-		} while (gameBoard[nBoardSpot -1] == 'X' || gameBoard[nBoardSpot -1] == 'O');
+		} while (board[nBoardSpot -1] == 'X' || board[nBoardSpot -1] == 'O');
 		
-		gameBoard[nBoardSpot - 1] = 'X'; 
+		board[nBoardSpot - 1] = 'X'; 
 	}
 	
-	void p2Turn(char gameBoard[])
+	void p2Turn(char board[])
 	{
 		//get the Location from the user
 		int nBoardSpot;
@@ -50,9 +53,9 @@ class Board
 		do {
 			cout << "Player 1 turn ... Pick a number to place an X ";
 			cin >> nBoardSpot;
-		} while (gameBoard[nBoardSpot -1] == 'O' || gameBoard[nBoardSpot -1] == 'X');
+		} while (board[nBoardSpot -1] == 'O' || board[nBoardSpot -1] == 'X');
 		
-		gameBoard[nBoardSpot - 1] = 'O'; 
+		board[nBoardSpot - 1] = 'O'; 
 	}
 	
 	bool isWinner(char gameBoard[])
