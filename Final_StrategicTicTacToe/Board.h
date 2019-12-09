@@ -6,18 +6,12 @@ class Board
 	private:
 //		const int SQUARES = 9;
 		
-		char winner = ' ';
+		char win = '_';
 	public:
 		char board[9] = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
 		
 		
 	Board(){}
-	
-	
-	string test()
-	{
-		return "TEST";
-	}
 		
 	void display()
 	{
@@ -32,50 +26,79 @@ class Board
 		cout << endl;
 	}
 	
-	void p1Turn(char board[])
+	int p1Turn()
 	{
 		//get the Location from the user
 		int nBoardSpot;
 		
 		do {
-			cout << "Player 1 turn ... Pick a number to place an X ";
+			cout << "Player 1 turn ... Pick a number to place an X. ";
 			cin >> nBoardSpot;
-		} while (board[nBoardSpot -1] == 'X' || board[nBoardSpot -1] == 'O');
+		} while (nBoardSpot > 9 || nBoardSpot < 1 || board[nBoardSpot -1] == 'X' || board[nBoardSpot -1] == 'O');
 		
 		board[nBoardSpot - 1] = 'X'; 
+		return nBoardSpot;
 	}
 	
-	void p2Turn(char board[])
+	int p2Turn()
 	{
 		//get the Location from the user
 		int nBoardSpot;
 		
 		do {
-			cout << "Player 1 turn ... Pick a number to place an X ";
+			cout << "Player 2 turn ... Pick a number to place an O ";
 			cin >> nBoardSpot;
-		} while (board[nBoardSpot -1] == 'O' || board[nBoardSpot -1] == 'X');
+		} while (nBoardSpot > 9 || nBoardSpot < 1 || board[nBoardSpot -1] == 'O' || board[nBoardSpot -1] == 'X');
 		
 		board[nBoardSpot - 1] = 'O'; 
+		return nBoardSpot;
 	}
 	
-	bool isWinner(char gameBoard[])
+	//determines if this Board has been won yet
+	void winner()
 	{
-		bool win = false;
-		//test for horizontal win
-		for (int i = 0; i < 7; i++)
+		if (win == '_')
 		{
-			if (gameBoard[i] == gameBoard[i+3] && gameBoard[i] == gameBoard[i+6])
+			//test for horizontal win
+			for (int i = 0; i < 7; i++)
 			{
-				win = true;
-			} else if (i % 3 == 0 && gameBoard[i] == gameBoard[i+1] && gameBoard[i] == gameBoard[i+2])
-			{
-				win = true;
+				if (board[i] != '_')
+				{
+					if (board[i] == board[i+3] && board[i] == board[i+6])
+					{
+						win = board[i];
+						won();
+						break;
+					} else if (i % 3 == 0 && board[i] == board[i+1] && board[i] == board[i+2])
+					{
+						win = board[i];
+						won();
+						break;
+					}
+					else if ((board[0] == board[4] && board[4] == board[8]) || (board[2] == board[4] && board[4] == board[6]))
+					{
+						win = board[i];
+						won();
+						break;
+					}
+				}
 			}
-			else if ((gameBoard[0] == gameBoard[4] && gameBoard[4] == gameBoard[8]) || (gameBoard[2] == gameBoard[4] && gameBoard[4] == gameBoard[6]))
-			{
-				win = true;
-			}
-		} 
+		}
+	}
+
+	void won()
+	{
+		for (int i = 0; i < 9; i++)
+		{
+			if (i == 4)
+				board[i] = win;
+			else
+				board[i] = ' ';
+		}
+	}
+
+	char getWinner()
+	{
 		return win;
 	}
 	

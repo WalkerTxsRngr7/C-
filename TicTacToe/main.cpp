@@ -18,7 +18,7 @@ int main(int argc, char** argv) {
 		displayBoard(gameBoard);
 		if (isWinner(gameBoard))
 		{
-			cout << "Customer Wins! ";
+			cout << "Computer Wins! ";
 			break;	
 		}
 		playerTurn(gameBoard);
