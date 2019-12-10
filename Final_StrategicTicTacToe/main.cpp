@@ -17,21 +17,21 @@ int main(int argc, char** argv) {
 	int prev = 0;
 	
 	
-	
 	do {
-		displayBoard(gameBoard, prev);
-		if (winner(gameBoard))
+		if (winner(gameBoard) == 'O')
 		{
 			cout << "Player 2 Wins! ";
 			break;	
 		}
-		prev = p1Turn(gameBoard, prev);
 		displayBoard(gameBoard, prev);
-		if (winner(gameBoard))
+		prev = p1Turn(gameBoard, prev);
+		if (winner(gameBoard) == 'X')
 		{
+			displayBoard(gameBoard, prev);
 			cout << "Player 1 Wins! ";
 			break;
 		}
+		displayBoard(gameBoard, prev);
 		prev = p2Turn(gameBoard, prev);
 	} while (winner(gameBoard) == '_');
 	
@@ -64,7 +64,11 @@ void displayBoard(Board gameBoard[], int prev)
 		{
 			for (int col = 0; col < 3; col++)			//columns
 			{
-				if (i == prev-1)
+				if ((prev == 0 || gameBoard[prev-1].getWinner() != '_') && i != prev-1)
+				{
+					SetConsoleTextAttribute(hConsole, 2);
+				}
+				else if (i == prev-1)
 				{
 					SetConsoleTextAttribute(hConsole, 2);
 				} else
@@ -78,7 +82,11 @@ void displayBoard(Board gameBoard[], int prev)
 			cout << " | ";
 			for (int col = 0; col < 3; col++)
 			{
-				if (i+1 == prev-1)
+				if ((prev == 0 || gameBoard[prev-1].getWinner() != '_') && i+1 != prev-1)
+				{
+					SetConsoleTextAttribute(hConsole, 2);
+				}
+				else if (i+1 == prev-1)
 				{
 					SetConsoleTextAttribute(hConsole, 2);
 				} else
@@ -92,7 +100,11 @@ void displayBoard(Board gameBoard[], int prev)
 			cout << " | ";
 			for (int col = 0; col < 3; col++)
 			{
-				if (i+2 == prev-1)
+				if ((prev == 0 || gameBoard[prev-1].getWinner() != '_') && i+2 != prev-1)
+				{
+					SetConsoleTextAttribute(hConsole, 2);
+				}
+				else if (i+2 == prev-1)
 				{
 					SetConsoleTextAttribute(hConsole, 2);
 				} else
@@ -114,12 +126,12 @@ void displayBoard(Board gameBoard[], int prev)
 int p1Turn(Board gameBoard[], int prev)
 {
 	//get the Board to play in
-	if (prev == 0)
+	if (prev == 0 || gameBoard[prev-1].getWinner() != '_')
 	{	
 		int b = 0;
 		do
 		{
-			cout << "Type the number of the board you want to play in. ";
+			cout << "Player 1, type the number of the board you want to play in. ";
 			cin >> b;
 		} while (b > 9 || b < 1 || gameBoard[b-1].getWinner() != '_');
 		prev = b;
@@ -131,12 +143,12 @@ int p1Turn(Board gameBoard[], int prev)
 int p2Turn(Board gameBoard[], int prev)
 {
 	//get the Board to play in
-	if (prev == 0)
+	if (prev == 0 || gameBoard[prev-1].getWinner() != '_')
 	{	
 		int b = 0;
 		do
 		{
-			cout << "Type the number of the board you want to play in. ";
+			cout << "Player 2, type the number of the board you want to play in. ";
 			cin >> b;
 		} while (b > 9 || b < 1 || gameBoard[b-1].getWinner() != '_');
 		prev = b;
