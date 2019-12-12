@@ -35,6 +35,14 @@ int main(int argc, char** argv) {
 		prev = p2Turn(gameBoard, prev);
 	} while (winner(gameBoard) == '_');
 	
+
+	displayBoard(gameBoard, prev);
+	if (winner(gameBoard) == 'O')
+	{
+		cout << "Player 2 Wins! ";	
+	}
+		
+
 	// if (winner(gameBoard) == 'X')
 	// 	cout << "Player 1 Wins!";
 	// else
@@ -60,13 +68,17 @@ void displayBoard(Board gameBoard[], int prev)
 		int col1 = 0;
 		int col2 = 0;
 		int col3 = 0;
+		cout << endl;
 		for (int row = 0; row < 3; row++)		//small board row
 		{
 			for (int col = 0; col < 3; col++)			//columns
 			{
-				if ((prev == 0 || gameBoard[prev-1].getWinner() != '_') && i != prev-1)
+				if (prev == 0 || gameBoard[prev-1].getWinner() != '_')
 				{
-					SetConsoleTextAttribute(hConsole, 2);
+					if (gameBoard[i].getWinner() == '_')
+						SetConsoleTextAttribute(hConsole, 2);
+					else 
+						SetConsoleTextAttribute(hConsole, 15);
 				}
 				else if (i == prev-1)
 				{
@@ -82,9 +94,12 @@ void displayBoard(Board gameBoard[], int prev)
 			cout << " | ";
 			for (int col = 0; col < 3; col++)
 			{
-				if ((prev == 0 || gameBoard[prev-1].getWinner() != '_') && i+1 != prev-1)
+				if (prev == 0 || gameBoard[prev-1].getWinner() != '_')
 				{
-					SetConsoleTextAttribute(hConsole, 2);
+					if (gameBoard[i+1].getWinner() == '_')
+						SetConsoleTextAttribute(hConsole, 2);
+					else 
+						SetConsoleTextAttribute(hConsole, 15);
 				}
 				else if (i+1 == prev-1)
 				{
@@ -100,9 +115,12 @@ void displayBoard(Board gameBoard[], int prev)
 			cout << " | ";
 			for (int col = 0; col < 3; col++)
 			{
-				if ((prev == 0 || gameBoard[prev-1].getWinner() != '_') && i+2 != prev-1)
+				if (prev == 0 || gameBoard[prev-1].getWinner() != '_')
 				{
-					SetConsoleTextAttribute(hConsole, 2);
+					if (gameBoard[i+2].getWinner() == '_')
+						SetConsoleTextAttribute(hConsole, 2);
+					else 
+						SetConsoleTextAttribute(hConsole, 15);
 				}
 				else if (i+2 == prev-1)
 				{
@@ -120,7 +138,7 @@ void displayBoard(Board gameBoard[], int prev)
 		cout << "----|-----|----";
 		cout << endl;
 	} 
-	cout << endl << endl;
+	cout << endl;	//<< endl 
 }
 
 int p1Turn(Board gameBoard[], int prev)
@@ -168,21 +186,20 @@ char winner(Board gameBoard[])
 			gameBoard[i].winner();
 		}
 
-		//test for horizontal win
 		for (int i = 0; i < 7; i++)
 		{
 			if (gameBoard[i].getWinner() != '_')
 			{
-				if (gameBoard[i].getWinner() == gameBoard[i+3].getWinner() && gameBoard[i].getWinner() == gameBoard[i+6].getWinner())
+				if (gameBoard[i].getWinner() == gameBoard[i+3].getWinner() && gameBoard[i].getWinner() == gameBoard[i+6].getWinner())		//vertical win
 				{
 					win = gameBoard[i].getWinner();
-				} else if (i % 3 == 0 && gameBoard[i].getWinner() == gameBoard[i+1].getWinner() && gameBoard[i].getWinner() == gameBoard[i+2].getWinner())
+				} else if (i % 3 == 0 && gameBoard[i].getWinner() == gameBoard[i+1].getWinner() && gameBoard[i].getWinner() == gameBoard[i+2].getWinner())		//horizontal win
 				{
 					win = gameBoard[i].getWinner();
 				}
-				else if ((gameBoard[0].getWinner() == gameBoard[4].getWinner() && gameBoard[4].getWinner() == gameBoard[8].getWinner()) || (gameBoard[2].getWinner() == gameBoard[4].getWinner() && gameBoard[4].getWinner() == gameBoard[6].getWinner()))
+				else if ((gameBoard[0].getWinner() == gameBoard[4].getWinner() && gameBoard[4].getWinner() == gameBoard[8].getWinner()) || (gameBoard[2].getWinner() == gameBoard[4].getWinner() && gameBoard[4].getWinner() == gameBoard[6].getWinner()))	//diagonal win
 				{
-					win = gameBoard[i].getWinner();
+					win = gameBoard[4].getWinner();
 				}
 			}
 			

@@ -4,8 +4,6 @@ using namespace std;
 class Board
 {
 	private:
-//		const int SQUARES = 9;
-		
 		char win = '_';
 	public:
 		char board[9] = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
@@ -59,25 +57,24 @@ class Board
 	{
 		if (win == '_')
 		{
-			//test for horizontal win
 			for (int i = 0; i < 7; i++)
 			{
 				if (board[i] != '_')
 				{
-					if (board[i] == board[i+3] && board[i] == board[i+6])
+					if (board[i] == board[i+3] && board[i] == board[i+6])	//vertical win
 					{
 						win = board[i];
 						won();
 						break;
-					} else if (i % 3 == 0 && board[i] == board[i+1] && board[i] == board[i+2])
+					} else if (i % 3 == 0 && board[i] == board[i+1] && board[i] == board[i+2])		//horizontal win
 					{
 						win = board[i];
 						won();
 						break;
 					}
-					else if ((board[0] == board[4] && board[4] == board[8]) || (board[2] == board[4] && board[4] == board[6]))
+					else if ((board[0] == board[4] && board[4] == board[8]) || (board[2] == board[4] && board[4] == board[6]))	//diagonal win
 					{
-						win = board[i];
+						win = board[4];
 						won();
 						break;
 					}
